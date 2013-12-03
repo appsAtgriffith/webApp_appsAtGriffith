@@ -77,4 +77,5 @@ WebApp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  ENV['RAILS_RELATIVE_URL_ROOT'] = "/app-name"
 end

@@ -33,4 +33,5 @@ WebApp::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  ENV['RAILS_RELATIVE_URL_ROOT'] = "/app-name"
 end
