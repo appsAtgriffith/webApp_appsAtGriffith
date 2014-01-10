@@ -32,6 +32,8 @@ gem 'slim-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'execjs'
+
 group :test do
     # respec gem "rspec-rails"
     gem 'rspec-rails'
