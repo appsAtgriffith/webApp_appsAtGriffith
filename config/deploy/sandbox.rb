@@ -29,14 +29,13 @@ role :db,  %w{162.248.164.142}
 server 'www.malleegrove.net.au',
     user: 'aagriff',
     roles: %w{web app db},
-    group: 'deploy-group',
     ssh_options: {
         user: 'aagriff', # overrides user setting above
 
         keys: %w(/Users/jahead/.ssh/aAGriffCAC_key),
         forward_agent: true,
         auth_methods: %w(publickey),
-        :port => 80
+        :port => 22
     # password: 'please use keys'
     }
 

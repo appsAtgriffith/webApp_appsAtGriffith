@@ -15,7 +15,7 @@ set :stage, :production
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'www.malleegrove.net.au', user: 'aagriff', roles: %w{web app}, my_property: :my_value
+server '162.248.164.142', user: 'aagriff', roles: %w{web app}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -28,9 +28,8 @@ server 'www.malleegrove.net.au', user: 'aagriff', roles: %w{web app}, my_propert
 #  }
 set :ssh_options, {
     user: 'aagriff',
-    group: 'deploy-group',
     keys: %w(/Users/jahead/.ssh/aAGriffCAC_key),
-    port: 80,
+    port: 22,
     forward_agent: true,
     auth_methods: %w(publickey)
   }

@@ -4,7 +4,7 @@ set :branch, 'master'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, '/home/aagriff/webApp_appsAtgriffith'
+set :deploy_to, '/home/aagriff/apps/webApp_appsAtgriffith'
 set :scm, :git
 
 set :user, "aagriff"
