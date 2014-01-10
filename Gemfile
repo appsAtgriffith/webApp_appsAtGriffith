@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'execjs'
 
+gem 'therubyracer'
+
 group :test do
     # respec gem "rspec-rails"
     gem 'rspec-rails'
