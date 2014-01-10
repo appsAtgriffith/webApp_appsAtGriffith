@@ -40,10 +40,12 @@ group :test do
     gem 'cucumber-rails', :require => false
     gem 'database_cleaner'
 end
+
 gem 'rvm1-capistrano3', require: false
 group :development do
     gem 'capistrano', '~> 3.0.1'
-    gem 'capistrano-rvm', '~> 0.1.0'
+    gem 'capistrano-rvm' 
+    gem 'capistrano-bundler'
     
 end
 
