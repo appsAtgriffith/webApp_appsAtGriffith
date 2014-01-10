@@ -1,5 +1,7 @@
-/config/mongoid.yml
-/config/database.yml
-.DS_Store
 /log/*
+.DS_Store
+sftp-config-alt.json
+/config/database.yml
+/config/mongoid.yml
+sftp-config.json
 /tmp/*
