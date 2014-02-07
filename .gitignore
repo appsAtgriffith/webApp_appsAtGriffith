@@ -6,3 +6,4 @@ sftp-config-alt.json
 sftp-config.json
 /tmp/*
 /config/local_env.yml
+config/initializers/devise.rb
