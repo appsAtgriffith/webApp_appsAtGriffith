@@ -17,13 +17,21 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, true
 
-set :linked_files, %w{config/mongoid.yml}
+set :linked_files, %w{config/mongoid.yml initializers/devise.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
  set :keep_releases, 5
 
 namespace :deploy do
+
+  on hosts do |host|
+      upload! '/config/database.yml', '#{shared_path}/databse.yml'
+  end
+
+  on hosts do |host|
+      upload! '/config/initializers.yml', '#{shared_path}/initializers/devise.yml'
+  end
 
   desc 'Restart application'
   task :restart do
