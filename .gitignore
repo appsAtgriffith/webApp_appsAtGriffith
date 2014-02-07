@@ -5,3 +5,4 @@ sftp-config-alt.json
 /config/mongoid.yml
 sftp-config.json
 /tmp/*
+/config/local_env.yml

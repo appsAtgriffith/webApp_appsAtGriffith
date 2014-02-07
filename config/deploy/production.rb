@@ -1,5 +1,6 @@
 set :stage, :production
 
+
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
@@ -26,9 +27,10 @@ server '162.248.164.142', user: 'aagriff', roles: %w{web app}, my_property: :my_
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
+
 set :ssh_options, {
     user: 'aagriff',
-    keys: %w(/Users/jahead/.ssh/aAGriffCAC_key),
+    keys: [File.join(ENV["HOME"], ".ssh", "aAGriffCAC_key")],
     port: 22,
     forward_agent: true,
     auth_methods: %w(publickey)
