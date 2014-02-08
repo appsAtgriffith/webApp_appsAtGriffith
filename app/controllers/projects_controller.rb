@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, only: [:edit, :update, :destory]
+    before_action :authenticate_user!, only: [:edit, :update, :destroy,  :create]
     def index
         @projects = Project.all
     end
