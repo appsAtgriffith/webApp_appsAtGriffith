@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @project.name
+p
+  strong Desc
+  = @project.desc
+p
+  strong Budget:
+  = @project.budget
+
+= link_to 'Edit', edit_project_path(@product)
+'|
+= link_to 'Back', projects_path

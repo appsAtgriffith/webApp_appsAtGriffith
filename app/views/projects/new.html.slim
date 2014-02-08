@@ -1,0 +1,26 @@
+h1 Projects#new
+p Find me in app/views/projects/new.html.slim
+
+= form_for(@project) do |f|
+    .field
+        = f.label :name
+    br
+        = f.text_field :name
+    br
+    .field
+        = f.label :desc
+    br
+        = f.text_field :desc
+    br
+    .field
+        = f.label :ext_link
+    br 
+        = f.text_field :ext_link
+    br
+    .field
+        = f.label :budget
+    br
+        = f.text_field :budget
+    br
+    .actions
+        = f.submit

@@ -1,9 +1,11 @@
 WebApp::Application.routes.draw do
+
+  get "projects/show"
   devise_for :users
-  root :to => "home#index"
-  get "login/index"
-  resources :application
-  resources :login
+  resources :projects
+
+  root :to => "projects#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
