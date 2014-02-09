@@ -1,14 +1,18 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @project.name
-p
-  strong Desc
-  = @project.desc
-p
-  strong Budget:
-  = @project.budget
+div
+    p
+      strong Name:
+      .well class="well-lg"
+        = @project.name
+    p
+      strong Desc
+      .well class="well-lg"
+        = @project.desc
+    p
+      strong Budget:
+      .well class="well-lg"
+        = @project.budget
 
 = link_to 'Edit', edit_project_path(@product)
 '|

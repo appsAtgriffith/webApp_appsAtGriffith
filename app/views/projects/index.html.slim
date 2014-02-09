@@ -1,22 +1,21 @@
+
 h1 Listing products
-
-table
-  tr
-    th Name
-    th Description
-    th Price
-    th
-    th
-    th
-
-  - @projects.each do |project|
+.table-responsive
+  table class="table table-condensed table-hover"
     tr
-      td = project.name
-      td = project.desc
-      td = project.budget
-      td = link_to 'Show', project
-      td = link_to 'Edit', edit_project_path(project)
-      td = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
-br
+      th Name
+      th Description
+      th Price
+      th.tbl-options-header colspan="3" 
+        | options
 
-= link_to 'New Project', new_project_path
+    - @projects.each do |project|
+      tr
+        td = project.name
+        td = project.desc
+        td = project.budget
+        td = link_to 'Show', project
+        td = link_to 'Edit', edit_project_path(project)
+        td = link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+br
+  = link_to 'New Project', new_project_path

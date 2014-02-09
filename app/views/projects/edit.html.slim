@@ -1,23 +1,22 @@
 = form_for(@project) do |f|
-    .field
-        = f.label :name
-    br
-        = f.text_field :name
-    br
-    .field
-        = f.label :desc
-    br
-        = f.text_field :desc
-    br
-    .field
-        = f.label :ext_link
-    br 
-        = f.text_field :ext_link
-    br
-    .field
-        = f.label :budget
-    br
-        = f.text_field :budget
+    .form-group
+        = f.label :name, class: "col-sm-2 control-label"
+        .div style="max-width:470px"
+            = f.text_field :name, class: "form-control"
+    .form-group
+        = f.label :desc, class: "col-sm-2 control-label"
+        div style="max-width:470px"
+            = f.text_area :desc, :rows => 5, :style => "max-width:100" , class: "form-control"
+    .form-group
+        = f.label :ext_link, class: "col-sm-2 control-label"
+        div style="max-width:470px"
+            = f.text_field :ext_link,  class: "form-control"
+    .form-group
+        = f.label :budget, class: "col-sm-2 control-label"
+        div style="max-width:470px"
+            = f.text_field :budget,  class: "form-control"
     br
     .actions
         = f.submit
+br
+= link_to 'Back', projects_path
