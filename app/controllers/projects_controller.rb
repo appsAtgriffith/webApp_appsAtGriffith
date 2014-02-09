@@ -17,7 +17,19 @@ class ProjectsController < ApplicationController
     end
 
     def create
-         @project = Project.new(project_params)
+        @project = Project.new(project_params)
+
+        if current_user.membership.nil?
+            @membership = Membership.create
+            current_user.membership = @membership
+        else
+            @membership = current_user.membership
+        end
+
+        @project.members << @membership
+        @membership.projects << @project
+        @project.created_by_id = current_user.membership.id
+        @project.team_lead_id = current_user.membership.id
 
         respond_to do |format|
             if @project.save
@@ -57,9 +69,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-    
         params.require(:project).permit(:name, :desc, :ext_link, :budget)
-    
     end
 
 end

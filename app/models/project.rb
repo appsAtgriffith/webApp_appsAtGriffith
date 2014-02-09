@@ -11,31 +11,32 @@ class Project
   # embeds_many :projectimages
   
   # #Menbers
-  # has_one :menber, as: :team_lead
-  # has_one :member,  as: :project_created_by
-  # embeds_many :members
+  field :team_lead_id,      :type => BSON::ObjectId
+  field :created_by_id,     :type => BSON::ObjectId
+  has_and_belongs_to_many :members, inverse_of: :projects, :class_name => "Membership"
   
+
+
+
+
+  #links to team_lead_id
+
+  def team_lead
+    memberships.where(self.team_lead_id)
+  end
+
+  def project_created
+    memberships.where(self.project_created_id)
+  end
   # #project contraints
   # embeds_many :milestones
-
 end
-
-class Member
-    include Mongoid::Document
-    embedded_in :project
-    belongs_to :team_lead, polymorphic: true, validate: false
-    belongs_to :project_created_by, polymorphic: true, validate: false
-    belongs_to :user, polymorphic: true
-
-    field :user_name,             :type => String
-end 
 
 class Milestone 
     include Mongoid::Document
 
     field :milestone_name,       :type => String
     field :milestone_deadline,   :type => Date
-
 
     embedded_in :project
 end 
