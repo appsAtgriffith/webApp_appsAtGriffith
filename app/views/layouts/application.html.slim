@@ -10,7 +10,7 @@ html
     .jumbotron style="padding:5px inherit 5px 5px; text-align: center;"
       .container
         h1
-          | Apps@Griffith
+          = link_to 'Apps@Griffith', root_url
 
         - if notice
           p.alert.alert-notice
@@ -20,15 +20,16 @@ html
             = alert
         p.navbar-text.pull-right style="font-size:10px;color: white;"
           - if user_signed_in?
-            |  Logged in as 
+            |  Logged in as
             strong
               = current_user.email
-            | . 
+            | .
             = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
-            |  | 
+            |  |
             = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
           - else
             = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-            |  | 
+            |  |
             = link_to "Login", new_user_session_path, :class => 'navbar-link'
-= yield
+    .container
+      = yield

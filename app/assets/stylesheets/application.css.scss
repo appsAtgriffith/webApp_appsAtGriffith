@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+$jumbotron-bg: #c02424;
+$jumbotron-heading-color: #ffffff;
+
+@import "bootstrap";
+
+.jumbotron h1 > a {
+  color: white;
+}
