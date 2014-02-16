@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-#ruby-gemset=webApp_appsAtGriffith
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -25,7 +22,7 @@ gem 'jquery-rails'
 
 gem 'bson_ext'
 
-# Mongid Gem
+# Mongid Gem 
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -56,10 +53,10 @@ end
 gem 'rvm1-capistrano3', require: false
 group :development do
     gem 'capistrano', '~> 3.0.1'
-    gem 'capistrano-rvm'
+    gem 'capistrano-rvm' 
     gem 'capistrano-bundler'
     gem 'capistrano-rails', '~> 1.1'
-
+    
 end
 
 group :doc do
