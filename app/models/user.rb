@@ -33,30 +33,31 @@ class User
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
-  embedds_many :projects, inverse_of: :User, :class_name => "MemberOf"
-
+  embeds_many :projects, inverse_of: :user, :class_name => "MemberOf"
+  embeds_one  :profile
 end
 
 class MemberOf
     include Mongoid::Document
-    embedds_in :User, inverse_of: :projects, :class_name => "User"
+    embedded_in :user, inverse_of: :project, :class_name => "User"
     belongs_to :project, inverse_of: :members, :class_name => "Project"
     field :score,     :type => Integer, :default => 0
 end
 
 class Profile
+  include Mongoid::Document
+  embedded_in :user
   field :full_name,         :type => String
   field :s_number,          :type => String
   field :bio,               :type => String
   field :company,           :type => String
   field :school,            :type => String
-  embedds_many :phone_numbers, inverse_of: :profile, :class_name => "PhoneNumber"
+  embeds_many :phone_numbers, inverse_of: :profile, :class_name => "PhoneNumber"
 end
 
 class PhoneNumber
-    embedds_in :profile, inverse_of: :phone_numbers, :class_name => "Profile"
-    field :type,                  type: Symbol 
-    validates_inclusion_of :type, in: [:work, :mobile, :home]
-
+  include Mongoid::Document
+  embedded_in :profile, inverse_of: :phone_number, :class_name => "Profile"
+  field :type,            type: Symbol 
+  validates_inclusion_of :type, in: [:work, :mobile, :home]
 end
-

@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :update, :destroy,  :create]
     def index
         @projects = Project.all
-        y
     end
 
     def new
