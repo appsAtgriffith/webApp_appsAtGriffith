@@ -3,47 +3,49 @@ class Project
 
   #Project Info
   field :name,              :type => String
-  field :school,            :type => String
-  field :desc,              :type => String
-  field :ext_link,          :type => String
+  field :description,       :type => String
+  field :comment,           :type => String
+  field :external_link,     :type => String
   field :budget,            :type => Integer
+  field :due_date,          :type => Date
 
-  # embeds_many :projectimages
-  
   # #Menbers
   field :team_lead_id,      :type => BSON::ObjectId
   field :created_by_id,     :type => BSON::ObjectId
-  has_and_belongs_to_many :members, inverse_of: :projects, :class_name => "Membership"
+  has_many :members, inverse_of: :projects, :class_name => "Membership"
   
 
-
+  #history
+  field :current_state_id,      :type => BSON::ObjectId
+  field :created_by_id,     :type => BSON::ObjectId
+  embeds_many :history
 
 
   #links to team_lead_id
-
   def team_lead
-    memberships.where(self.team_lead_id)
+    self.team_lead_id
   end
-
-  def project_created
-    memberships.where(self.project_created_id)
+  #Links to the creator user
+  def creator
+    self.project_created_id
+  end
+  #will get the current state from history
+  def current_state
+    history.where(current_state_id)
+  end
+  #will get the date at which the document 
+  #as created
+  def created_on
+    history.where(created_by_id)
   end
   # #project contraints
   # embeds_many :milestones
 end
 
-class Milestone 
-    include Mongoid::Document
+class History 
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-    field :milestone_name,       :type => String
-    field :milestone_deadline,   :type => Date
-
-    embedded_in :project
-end 
-
-class ProjectImage
-    include Mongoid::Document
-    embedded_in :project
-    field :image_name,       :type => String
-    has_one :project_image_data, as: :image_data
-end 
+  field :type,                  type: Symbol 
+  validates_inclusion_of :type, in: [:created, :dormant, :active, :cloased]
+end

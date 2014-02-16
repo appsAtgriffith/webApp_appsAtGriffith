@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :update, :destroy,  :create]
     def index
         @projects = Project.all
+        y
     end
 
     def new
@@ -17,20 +18,6 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        @project = Project.new(project_params)
-
-        if current_user.membership.nil?
-            @membership = Membership.create
-            current_user.membership = @membership
-        else
-            @membership = current_user.membership
-        end
-
-        @project.members << @membership
-        @membership.projects << @project
-        @project.created_by_id = current_user.membership.id
-        @project.team_lead_id = current_user.membership.id
-
         respond_to do |format|
             if @project.save
                 format.html { redirect_to @project, notice: 'Project was successfully created.' }
