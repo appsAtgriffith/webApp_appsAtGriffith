@@ -17,8 +17,21 @@ $jumbotron-heading-color: #ffffff;
 
 @import "bootstrap";
 
-.jumbotron h1 > a {
-  color: white;
+.jumbotron {
+    padding: 5px inherit 5px 5px;
+    text-align: center;
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: white;
+    }
+
+    p.navbar-text {
+        font-size: 10px;
+        color: white;
+    }
 }
 
 .aag-clickable {
