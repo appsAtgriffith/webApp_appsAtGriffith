@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:edit, :update, :destroy,  :create]
+    load_and_authorize_resource
     def index
         @projects = Project.all
-        y
     end
 
     def new

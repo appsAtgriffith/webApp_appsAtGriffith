@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+html
+  head
+    title
+      | Apps@Griffith
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'
+  body
+    .jumbotron
+      .container
+        h1
+          = link_to 'Apps@Griffith', root_url
+
+        - if notice
+          p.alert.alert-notice
+            = notice
+        - if alert
+          p.alert.alert-error
+            = alert
+        p.navbar-text.pull-right
+          - if user_signed_in?
+            | Logged in as
+            strong
+              = " #{current_user.email}"
+            |  |
+            = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+            |  |
+            = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+          - else
+            = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+            |  |
+            = link_to "Login", new_user_session_path, :class => 'navbar-link'
+    .container
+      = yield

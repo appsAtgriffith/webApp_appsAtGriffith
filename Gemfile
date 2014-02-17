@@ -44,6 +44,10 @@ gem 'execjs'
 
 gem 'therubyracer'
 
+gem 'cancan'
+
+gem 'role_model'
+
 group :test do
     # respec gem "rspec-rails"
     gem 'rspec-rails'
